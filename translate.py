@@ -25,10 +25,15 @@ def translate_to_hindi(text):
     return translation.text
 
 # Step 4: Convert Hindi Text to Speech
-
 def text_to_speech(text, hindi_audio_path):
     speech = gTTS(text=text, lang='hi', slow=False)
     speech.save(hindi_audio_path)
+    
+# Step 5: Merge Video and Hindi Speech
+def merge_video_and_speech(video_path, hindi_audio_path, output_video_path):
+    video_clip = VideoFileClip(video_path)
+    audio_clip = AudioFileClip(hindi_audio_path)
+    merged_clip = video_clip.set_audio(audio_clip)
+    merged_clip.write_videofile(output_video_path)
 
-# Step 5: Merge Audio with Video
 
