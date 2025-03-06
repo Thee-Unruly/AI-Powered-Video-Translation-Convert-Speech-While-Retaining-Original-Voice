@@ -34,6 +34,6 @@ def merge_video_and_speech(video_path, hindi_audio_path, output_video_path):
     video_clip = VideoFileClip(video_path)
     audio_clip = AudioFileClip(hindi_audio_path)
     merged_clip = video_clip.set_audio(audio_clip)
-    merged_clip.write_videofile(output_video_path)
+    merged_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac")
 
 
