@@ -44,4 +44,20 @@ if uploaded_file is not None:
     video_path = "uploaded_video.mp4"
     with open(video_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
-
+        
+    st.success("Video uploaded successfully!")
+    
+    audio_file = "audio.wav"
+    translated_audio = "translated_audio.mp3"
+    output_video = "output_translated.mp4"
+    
+    if st.button("Translate Video to Hindi"):
+        extract_audio(video_path, audio_file)
+        text = transcribe_audio(audio_file)
+        translated_text = translate_to_hindi(text)
+        text_to_speech(translated_text, translated_audio)
+        merge_video_and_speech(video_path, translated_audio, output_video)
+        
+        st.success("Translation complete! Download your video below.")
+        st.video(output_video)
+        st.download_button("Download Translated Video", output_video, file_name="translated_video.mp4")
