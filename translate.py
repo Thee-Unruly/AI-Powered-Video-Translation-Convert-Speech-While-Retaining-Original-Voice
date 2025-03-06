@@ -35,5 +35,13 @@ def merge_video_and_speech(video_path, hindi_audio_path, output_video_path):
     audio_clip = AudioFileClip(hindi_audio_path)
     merged_clip = video_clip.set_audio(audio_clip)
     merged_clip.write_videofile(output_video_path, codec="libx264", audio_codec="aac")
+    
+# Give it a web interactive interface for testing purposes
+st.title("AI-Powered Video Translation")
+uploaded_file = st.file_uploader("Upload a video file", type=["mp4", "avi", "mov"])
 
+if uploaded_file is not None:
+    video_path = "uploaded_video.mp4"
+    with open(video_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
 
