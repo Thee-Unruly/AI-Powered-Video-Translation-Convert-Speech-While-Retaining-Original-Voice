@@ -1,0 +1,5 @@
+whisper
+googletrans==4.0.0-rc1
+gtts
+moviepy
+ffmpeg-python
