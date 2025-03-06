@@ -19,10 +19,16 @@ def transcribe_audio(audio_path):
     return result["text"]
 
 # Step 3: Translate Text to Hindi Audio
-
 def translate_to_hindi(text):
     translator = Translator()
     translation = translator.translate(text, dest='hi') # Translate to Hindi
     return translation.text
 
+# Step 4: Convert Hindi Text to Speech
+
+def text_to_speech(text, hindi_audio_path):
+    speech = gTTS(text=text, lang='hi', slow=False)
+    speech.save(hindi_audio_path)
+
+# Step 5: Merge Audio with Video
 
